@@ -23,6 +23,8 @@
 #include <utils/Log.h>
 
 #define BIG_MAX_CPU_PATH "/sys/devices/system/cpu/cpu0/core_ctl/max_cpus"
+#define CPU4 "/sys/devices/system/cpu/cpu4/online"
+#define CPU5 "/sys/devices/system/cpu/cpu5/online"
 
 static void sysfs_write(char *path, char *s)
 {
@@ -49,4 +51,9 @@ void power_set_interactive_ext(int on)
 {
     ALOGD("%sabling big CPU cluster", on ? "En" : "Dis");
     sysfs_write(BIG_MAX_CPU_PATH, on ? "2" : "0");
+/* radomly turnON cpu4 and cpu5 after sleep. sometimes little cluster failes to On CPUs */
+    if (on) {
+        sysfs_write(CPU4, "1");
+        sysfs_write(CPU5, "1");
+    }
 }

@@ -78,7 +78,11 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu6/online 1
     write /sys/devices/system/cpu/cpu7/online 1
     write /sys/kernel/sound_control_3/gpl_speaker_gain "4 4"
-
+    chmod 664 /sys/devices/system/cpu/cpu4/online
+    chown root system /sys/devices/system/cpu/cpu4/online
+    chmod 664 /sys/devices/system/cpu/cpu5/online
+    chown root system /sys/devices/system/cpu/cpu5/online
+    
     # Enable low power modes
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
 
