@@ -103,6 +103,10 @@ TARGET_KERNEL_LLVM_BINUTILS := false
 TARGET_KERNEL_CLANG_COMPILE := false
 TARGET_KERNEL_SOURCE := kernel/cyanogen/msm8916
 
+# Kernel additional flags
+TARGET_KERNEL_ADDITIONAL_FLAGS := \
+    HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+
 # Legacy memfd
 TARGET_HAS_MEMFD_BACKPORT := true
 
