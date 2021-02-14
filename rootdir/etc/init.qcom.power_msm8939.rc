@@ -1,7 +1,7 @@
 on enable-low-power
     start qcom-mem
 
-    write /proc/sys/kernel/sched_boost 0
+    write /proc/sys/kernel/sched_boost 1
 
     # RPS mask
     write /sys/class/net/rmnet0/queues/rx-0/rps_cpus 10
@@ -58,7 +58,7 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 2
     write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 95
     write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 85
-    write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
+    write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 500
     write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 4
     write /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster 1
     write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 95
