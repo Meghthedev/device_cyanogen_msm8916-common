@@ -61,8 +61,8 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 500
     write /sys/devices/system/cpu/cpu0/core_ctl/task_thres 4
     write /sys/devices/system/cpu/cpu0/core_ctl/is_big_cluster 1
-    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 95
-    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 70
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 68
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 40
     write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 5000
     write /sys/devices/system/cpu/cpu4/core_ctl/not_preferred 1
 
