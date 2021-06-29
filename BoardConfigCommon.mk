@@ -67,6 +67,9 @@ TARGET_VNDK_USE_CORE_VARIANT := true
 # DexPreopt debug info
 WITH_DEXPREOPT_DEBUG_INFO := false
 
+# Dedupe VNDK libraries with identical core variants.
+TARGET_VNDK_USE_CORE_VARIANT := true
+
 # Display
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
