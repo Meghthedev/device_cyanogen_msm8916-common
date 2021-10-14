@@ -28,6 +28,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.enable.sglscale=1 \
     debug.hwui.use_buffer_age=false \
     debug.mdpcomp.idletime=600 \
+    debug.renderengine.backend=threaded \
     debug.sf.disable_backpressure=1 \
     debug.sf.latch_unsignaled=1 \
     persist.hwc.mdpcomp.enable=true \
