@@ -83,3 +83,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.fuse.transcode_user_control=true \
     persist.sys.fuse.transcode_enabled=false
+
+# Disable surfaceflinger prime_shader cache to improve post boot memory.
+PRODUCT_PROPERTY_OVERRIDES += service.sf.prime_shader_cache=0
