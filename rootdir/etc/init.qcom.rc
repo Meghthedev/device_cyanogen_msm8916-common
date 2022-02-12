@@ -151,6 +151,21 @@ on boot
     chmod 0664 /sys/class/graphics/fb0/mode
     chown system graphics /sys/class/graphics/fb0/modes
     chmod 0664 /sys/class/graphics/fb0/modes
+    chown system graphics /sys/class/graphics/fb0/srgb
+    chmod 0664 /sys/class/graphics/fb0/srgb
+    
+    # Sensors calibration
+    chown system system /sys/oppo_ftm/accel/cali
+    chown system system /sys/oppo_ftm/als_prox/calibration
+    chown system system /sys/oppo_ftm/als_prox/name
+    chown system system /sys/oppo_ftm/als_prox/ps_enable
+    chown system system /sys/oppo_ftm/als_prox/prox_raw
+    chown system system /sys/oppo_ftm/als_prox/is_high_light
+    chown system system /sys/oppo_ftm/als_prox/ps_thd
+    chown system system /sys/oppo_ftm/als_prox/far_status
+    chown system system /sys/oppo_ftm/als_prox/algo_wakeup
+    chown system system /sys/oppo_ftm/als_prox/algo_info
+    chown system system /sys/oppo_ftm/als_prox/ps_min
 
 service irsc_util /system/vendor/bin/irsc_util "/system/vendor/etc/sec_config"
     class main
