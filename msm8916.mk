@@ -107,18 +107,32 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl \
     android.hardware.gnss@1.0-service
-
+    
+# First stage init
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/fstab.ramdisk.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
+    
 # Init scripts
 PRODUCT_PACKAGES += \
+    fstab.qcom \
+    init.target.rc \
     init.qcom.rc \
-    init.qcom.mem.sh \
     init.qcom.power.rc \
+    init.qcom.ssr.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
     ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \
     init.qcom.bt.sh
+    
+# zRam
+PRODUCT_PACKAGES += \
+    set_zram.sh
+
+# Reduce post boot lags
+PRODUCT_PACKAGES += \
+    init.boot_boost.sh    
 
 # IRQ balance
 ifeq ($(TARGET_BOARD_PLATFORM_VARIANT),msm8939)

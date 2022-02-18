@@ -109,10 +109,10 @@
 /dev/msm_camera/*         0660   system     camera
 /dev/gemini/              0660   system     camera
 /dev/mercury0             0660   system     camera
-/dev/msm_vidc_reg         0660   system     audio
-/dev/msm_vidc_dec         0660   system     audio
-/dev/msm_vidc_dec_sec     0660   system     audio
-/dev/msm_vidc_enc         0660   system     audio
+/dev/msm_vidc_reg         0660   system     camera
+/dev/msm_vidc_dec         0660   system     camera
+/dev/msm_vidc_dec_sec     0660   system     camera
+/dev/msm_vidc_enc         0660   system     camera
 /dev/msm_rotator          0660   system     system
 /dev/adsprpc-smd          0664   system     system
 
@@ -137,6 +137,7 @@
 /dev/msm_acdb             0660   system     audio
 /dev/msm_cad              0660   system     audio
 /dev/msm_fm               0660   system     audio
+/dev/msm_mp3*             0660   system     audio
 /dev/msm_mvs              0660   system     audio
 /dev/msm_pcm_lp_dec       0660   system     audio
 /dev/msm_preproc_ctl      0660   system     audio
@@ -263,6 +264,3 @@
 /sys/devices/virtual/input/input* rept_xy                     0660    input      system
 /sys/devices/virtual/input/input* rept_z                      0660    input      system
 /sys/devices/virtual/input/input* test                        0660    input      system
-
-/dev/block/platform/soc.0/7824900.sdhci/by-name/frp           0600    system     system
-/dev/block/platform/soc.0/7824900.sdhci/by-name/config        0600    system     system
