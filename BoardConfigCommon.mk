@@ -61,17 +61,16 @@ USE_XML_AUDIO_POLICY_CONF := 1
 # Bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
 
-# Camera
-TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
-    /system/vendor/bin/mm-qcamera-daemon=23
+# Dedupe VNDK libraries with identical core variants.
+TARGET_VNDK_USE_CORE_VARIANT := true
 
 # DexPreopt debug info
 WITH_DEXPREOPT_DEBUG_INFO := false
 
 # Display
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
+TARGET_DISABLE_POSTRENDER_CLEANUP := true
 TARGET_USES_ION := true
 
 # Encryption
@@ -92,12 +91,15 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 loop.max_part=7
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 loop.max_part=7
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET := 0x02000000
 
 TARGET_KERNEL_SOURCE := kernel/cyanogen/msm8916
+
+# Legacy memfd
+TARGET_HAS_MEMFD_BACKPORT := true
 
 # Manifest
 DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/manifest.xml
@@ -120,15 +122,17 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += \
-    $(PLATFORM_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(PLATFORM_PATH)/sepolicy/private
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib64/libflp.so|libshims_flp.so \
     /system/vendor/lib64/libizat_core.so|libshims_get_process_name.so \
+    /system/vendor/lib64/libril-qc-qmi-1.so|libshims_ril.so \
     /system/vendor/lib/libflp.so|libshims_flp.so \
-    /system/vendor/lib/libizat_core.so|libshims_get_process_name.so
+    /system/vendor/lib/libizat_core.so|libshims_get_process_name.so \
+    /system/vendor/lib/libril-qc-qmi-1.so|libshims_ril.so
 
 # Wi-Fi
 BOARD_HAS_QCOM_WLAN := true

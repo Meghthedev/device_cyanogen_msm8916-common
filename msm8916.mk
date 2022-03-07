@@ -18,6 +18,8 @@
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+PRODUCT_ENFORCE_RRO_TARGETS += *
+
 # ANT+
 PRODUCT_PACKAGES += \
     AntHalService \
@@ -33,8 +35,7 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
-    libaudio-resampler \
-    tinymix
+    libaudio-resampler
 
 PRODUCT_PACKAGES += \
     audio.primary.msm8916 \
@@ -43,9 +44,9 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessing
 
 PRODUCT_PACKAGES += \
-    android.hardware.audio@4.0-impl \
-    android.hardware.audio@2.0-service \
-    android.hardware.audio.effect@4.0-impl
+    android.hardware.audio@5.0-impl \
+    android.hardware.audio.service \
+    android.hardware.audio.effect@5.0-impl
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
@@ -65,21 +66,24 @@ TARGET_BOOTANIMATION_HALF_RES := true
 PRODUCT_PACKAGES += \
     gralloc.msm8916 \
     hwcomposer.msm8916 \
-    libgenlock \
     libtinyxml \
     memtrack.msm8916
 
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.composer@2.1-impl \
-    android.hardware.graphics.mapper@2.0-impl-2.1 \
+    android.hardware.graphics.composer@2.1-service \
+    android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.surface_flinger.force_hwc_copy_for_virtual_displays=true \
     ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+
+# Do not spin up a separate process for the network stack, use an in-process APK.
+PRODUCT_PACKAGES += InProcessNetworkStack
+PRODUCT_PACKAGES += com.android.tethering.inprocess
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -107,11 +111,26 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0-impl \
     android.hardware.gnss@1.0-service
-    
+
 # First stage init
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.ramdisk.qcom:$(TARGET_COPY_OUT_RAMDISK)/fstab.qcom
-    
+
+# Healthd
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-impl.recovery \
+    android.hardware.health@2.1-service
+
+# HIDL
+PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
+
+PRODUCT_PACKAGES += \
+    libhidltransport \
+    libhidltransport.vendor \
+    libhwbinder \
+    libhwbinder.vendor
+
 # Init scripts
 PRODUCT_PACKAGES += \
     init.qcom.rc \
@@ -134,6 +153,7 @@ PRODUCT_PACKAGES += \
 
 # IRQ balance
 ifeq ($(TARGET_BOARD_PLATFORM_VARIANT),msm8939)
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 endif
@@ -143,14 +163,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
 # Keymaster
-ifneq ($(TARGET_PROVIDES_KEYMASTER),true)
-PRODUCT_PACKAGES += \
-    keystore.msm8916
-endif
-
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
+
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-service.software
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
@@ -200,13 +219,14 @@ endif
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.2-service-qti
+    android.hardware.power-service-qti
 
 # Radio
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     librmnetctl \
-    libxml2
+    libxml2 \
+    libshims_ril
 
 # Recovery
 PRODUCT_PACKAGES += \
@@ -214,8 +234,7 @@ PRODUCT_PACKAGES += \
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
-    android.hardware.renderscript@1.0-impl \
-    android.hardware.renderscript@1.0-service
+    android.hardware.renderscript@1.0-impl
 
 # Seccomp
 PRODUCT_COPY_FILES += \
@@ -249,7 +268,6 @@ PRODUCT_PACKAGES += \
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
-    libwcnss_qmi \
     wcnss_service
 
 PRODUCT_PACKAGES += \
