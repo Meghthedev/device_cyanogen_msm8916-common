@@ -78,3 +78,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Enable support of one-handed mode
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.support_one_handed_mode=true
+
+# Disable media transcoding
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.fuse.transcode_user_control=true \
+    persist.sys.fuse.transcode_enabled=false
