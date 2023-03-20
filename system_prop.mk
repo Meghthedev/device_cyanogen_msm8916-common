@@ -16,6 +16,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
+    bluetooth.le.disable_apcf_extended_features=1 \
     vendor.bluetooth.soc=pronto \
     vendor.qcom.bluetooth.soc=pronto \
     ro.bluetooth.dun=true \
