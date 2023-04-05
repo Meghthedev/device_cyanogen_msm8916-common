@@ -33,7 +33,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.latch_unsignaled=1 \
     persist.hwc.mdpcomp.enable=true \
     persist.hwc.ptor.enable=true \
-    persist.hwc.pubypass=true
+    persist.hwc.pubypass=true \
+    persist.sys.sf.color_saturation=1.0
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
