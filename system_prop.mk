@@ -41,7 +41,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.a2dp_offload.supported=false \
     persist.bluetooth.a2dp_offload.disabled=true
 
-    # Display
+# Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.enable.sglscale=1 \
     debug.hwui.use_buffer_age=false \
@@ -51,7 +51,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.latch_unsignaled=1 \
     persist.hwc.mdpcomp.enable=true \
     persist.hwc.ptor.enable=true \
-    persist.hwc.pubypass=true
+    persist.hwc.pubypass=true \
+    persist.sys.sf.color_saturation=1.0
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
