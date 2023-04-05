@@ -23,7 +23,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.profile.pan.nap.enabled=true \
     bluetooth.profile.pan.panu.enabled=true \
     bluetooth.profile.pbap.server.enabled=true \
-    bluetooth.profile.sap.server.enabled=true
+    bluetooth.profile.sap.server.enabled=true \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.media_vol_steps=25 \
@@ -36,9 +36,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.dun=true \
     ro.bluetooth.hfp.ver=1.7 \
     ro.bluetooth.sap=true \
-    ro.qualcomm.bt.hci_transport=smd
+    ro.qualcomm.bt.hci_transport=smd \
+    persist.bluetooth.bluetooth_audio_hal.disabled=false \
+    ro.bluetooth.a2dp_offload.supported=false \
+    persist.bluetooth.a2dp_offload.disabled=true
 
-# Display
+    # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.enable.sglscale=1 \
     debug.hwui.use_buffer_age=false \
