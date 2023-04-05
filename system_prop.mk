@@ -65,7 +65,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.kernel.ebpf.supported=false \
     persist.sys.binary_xml=false \
-    ro.vndk.version=current
+    ro.vndk.version=current \
+    fw.max_users=1
 
 # Wi-Fi
 PRODUCT_PROPERTY_OVERRIDES += \
