@@ -9,7 +9,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.offload.gapless.enabled=true \
     vendor.audio_hal.period_size=192 \
     vendor.voice.path.for.pcm.voip=true \
-    vendor.audio.offload.gapless.enabled=true \
     bluetooth.device.class_of_device=90,2,12 \
     bluetooth.profile.a2dp.source.enabled=true \
     bluetooth.profile.asha.central.enabled=true \
