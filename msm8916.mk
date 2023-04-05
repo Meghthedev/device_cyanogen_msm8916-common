@@ -118,9 +118,7 @@ PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
 PRODUCT_PACKAGES += \
     libhidltransport \
-    libhidltransport.vendor \
-    libhwbinder \
-    libhwbinder.vendor
+    libhwbinder
 
 # Init scripts
 PRODUCT_PACKAGES += \
@@ -216,7 +214,6 @@ PRODUCT_PACKAGES += \
 
 # Radio
 PRODUCT_PACKAGES += \
-    libcnefeatureconfig \
     librmnetctl \
     libxml2 \
     libshims_ril
