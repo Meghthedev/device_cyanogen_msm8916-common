@@ -74,3 +74,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Zygote
 PRODUCT_PROPERTY_OVERRIDES += \
     zygote.critical_window.minute=10
+
+# Enable support of one-handed mode
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.support_one_handed_mode=true
