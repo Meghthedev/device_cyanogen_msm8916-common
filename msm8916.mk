@@ -36,12 +36,6 @@ PRODUCT_PACKAGES += \
     libaudio-resampler
 
 PRODUCT_PACKAGES += \
-    audio.primary.msm8916 \
-    libqcompostprocbundle \
-    libqcomvisualizer \
-    libqcomvoiceprocessing
-
-PRODUCT_PACKAGES += \
     android.hardware.audio@5.0-impl \
     android.hardware.audio.service \
     android.hardware.audio.effect@5.0-impl
@@ -58,10 +52,7 @@ TARGET_BOOTANIMATION_HALF_RES := true
 
 # Display
 PRODUCT_PACKAGES += \
-    gralloc.msm8916 \
-    hwcomposer.msm8916 \
-    libtinyxml \
-    memtrack.msm8916
+    libtinyxml 
 
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
@@ -165,17 +156,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.0-service-legacymm \
     vendor.lineage.livedisplay@2.0-service-sysfs
-
-# Media
-PRODUCT_PACKAGES += \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxCore \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc \
-    libOmxVdec \
-    libOmxVenc \
-    libstagefrighthw
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs_$(TARGET_BOARD_PLATFORM_VARIANT).xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
