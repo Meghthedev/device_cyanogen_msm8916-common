@@ -98,10 +98,11 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET := 0x02000000
+TOP_PATH := $(realpath $(TOP))
+KERNEL_TOOLCHAIN := $(TOP_PATH)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_LLVM_BINUTILS := false
 TARGET_KERNEL_CLANG_COMPILE := false
-TARGET_KERNEL_SOURCE := kernel/cyanogen/msm8916
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
 # Kernel additional flags
 TARGET_KERNEL_ADDITIONAL_FLAGS := \
