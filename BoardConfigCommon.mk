@@ -20,6 +20,9 @@ PLATFORM_PATH := device/cyanogen/msm8916-common
 # We copy prebuilt binaries and libs instead of packaging them
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
+# Workarounds
+TARGET_DISABLE_EPPE := true
+
 # Platform
 TARGET_BOARD_PLATFORM := msm8916
 TARGET_BOOTLOADER_BOARD_NAME := MSM8916
